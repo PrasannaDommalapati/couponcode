@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './coupon-app.scss';
+// import './coupon-app.scss';
 
-export default class CouponApp extends Component {
+class CouponApp extends Component {
   render() {
     return (
       <div className="App">
@@ -14,4 +14,6 @@ export default class CouponApp extends Component {
     );
   }
 }
+
+export default CouponApp;
 
