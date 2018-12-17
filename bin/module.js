@@ -18,5 +18,9 @@ module.exports = {
         require.resolve('sass-loader'),
       ]
     },
+	 {
+      exclude:[/\.(js|jsx|mjs)$/,/\.html$/,/\.json$/,/\.scss$/],
+      loader: require.resolve('file-loader')
+    }
   ],
 }

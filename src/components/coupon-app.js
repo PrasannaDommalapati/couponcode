@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import logo from './logo.svg';
-// import './coupon-app.scss';
+import './coupon-app.scss';
 
-class CouponApp extends Component {
+class CouponApp extends React.Component {
   render() {
     return (
       <div className="App">
