@@ -1,8 +1,12 @@
-const sassRegex = /\.(scss|sass)$/;
-const jsxRegex =  /\.(js|jsx)$/;
+const sassRegex = /\.(scss|sass|css)$/;
+const jsxRegex = /\.(js|jsx)$/;
 
 module.exports = {
   rules: [
+    {
+      exclude:[/\.(js|jsx|mjs)$/, /\.json$/, /\.html$/, /\.scss$/, /\.css$/],
+      loader: 'file-loader'
+    },
     {
       test: jsxRegex,
       exclude: /node_modules/,
@@ -18,9 +22,5 @@ module.exports = {
         require.resolve('sass-loader'),
       ]
     },
-	 {
-      exclude:[/\.(js|jsx|mjs)$/,/\.html$/,/\.json$/,/\.scss$/],
-      loader: require.resolve('file-loader')
-    }
   ],
 }
