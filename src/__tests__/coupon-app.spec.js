@@ -1,5 +1,5 @@
 import React from 'react';
-import CouponApp from '../src/components/coupon-app';
+import CouponApp from '../components/coupon-app';
 import renderer from 'react-test-renderer';
 
 describe('App Component', () => {
