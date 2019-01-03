@@ -13,7 +13,7 @@ module.exports = (env, argv) => ({
     path: path.resolve(__dirname, 'public'),
     filename: '[name].bundle.js'
   },
-  watch: true,
+  watch: false,
   devtool: argv.mode == 'development' ? 'source-map' : false,
   performance: { hints: false },
   devServer: {
