@@ -4,10 +4,10 @@
   "author": "Prasanna KC Dommalapati",
   "description": "Simple Webpack dev server, running react and tests with jest",
   "license": "MIT",
-  "main": "webpack.config.js",
+  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode production --hot --open --progress --colors",
-    "build": "webpack",
+    "build": "webpack -p",
     "test": "jest --no-cache",
     "test:dev": "jest --watch",
     "test:coverage": "jest --coverage",
