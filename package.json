@@ -7,7 +7,6 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --mode production --hot --open --progress --colors",
-    "dev": "webpack --mode development --progress",
     "build": "webpack --mode production --progress",
     "test": "jest --no-cache",
     "test:dev": "jest --watch",
@@ -25,6 +24,7 @@
     }
   },
   "dependencies": {
+    "dotenv": "^6.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },
