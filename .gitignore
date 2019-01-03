@@ -37,6 +37,8 @@ node_modules/
 jspm_packages/
 .vscode/
 .history/
+.idea
+**/__snapshots__/
 
 # Typescript v1 declaration files
 typings/
