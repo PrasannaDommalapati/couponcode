@@ -1,6 +1,6 @@
-# simple-react-jest-webpack
+# Promotion Triumph
 
-The idea behind this _boilerplate_ is to be easy going writing `React` components with **ES2015** syntax. If you want to know abit more about why i made this heres a [link to my blog post](https://medium.com/@Nopziiemoo/another-webpack-boilerplate-light-130137604aad#.osa1toant) where i explain why i made this.
+Promotion triumph app is to give discount coupon codes for the buyers to save money when purchasing for the loved ones and increases the sales for the businesses with nominal subscription. Free for first 6 months.  
 
 # What do you get
 1. Easy setup to running a simple front dev enviroment with npm (or yarn if you fancy).

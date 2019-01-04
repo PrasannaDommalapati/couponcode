@@ -1,13 +1,8 @@
-import React from 'react';
-import AppHeader from './header/component';
+import React, {Component} from 'react';
+import { BrowserRouter } from "react-router-dom";
 
- export default class CouponApp extends React.Component {
-   
-  render() {
-    return (
-      <div className="App">
-        <AppHeader/>
-      </div>
-    );
-  }
+export default class CouponApp extends Component {
+    render() {
+        return <BrowserRouter/>;
+    }
 }

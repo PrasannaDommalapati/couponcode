@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link, Route} from "react-router-dom";
 import {
     Collapse,
     Navbar,
@@ -45,14 +46,14 @@ export default class AppHeader extends React.Component {
                             </NavItem>
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
-                                    Options
+                                    Profile
                                 </DropdownToggle>
                                 <DropdownMenu right>
                                     <DropdownItem>
-                                        Option 1
+                                        <Link to="/login">Login</Link>
                                     </DropdownItem>
                                     <DropdownItem>
-                                        Option 2
+                                        <Link to="/register">Register</Link>
                                     </DropdownItem>
                                     <DropdownItem divider />
                                     <DropdownItem>

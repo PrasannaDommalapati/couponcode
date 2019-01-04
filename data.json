@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "id": "12345k",
+      "email": "test01@example.com",
+      "password": "Password-123",
+      "name": "Test 01",
+      "dob": "12-03-1978",
+      "role": "customer",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer molestie imperdiet hendrerit. Aenean ornare magna eget lacinia posuere. Mauris sit amet interdum justo, nec pellentesque nisl. Donec id nibh fermentum, pulvinar dolor at, congue nibh"
+    },{
+      "id": "12346k",
+      "email": "test02@example.com",
+      "password": "Password-234",
+      "name": "Test 02",
+      "dob": "12-03-1978",
+      "role": "customer",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer molestie imperdiet hendrerit. Aenean ornare magna eget lacinia posuere. Mauris sit amet interdum justo, nec pellentesque nisl. Donec id nibh fermentum, pulvinar dolor at, congue nibh"
+    },{
+      "id": "12347h",
+      "email": "test03@example.com",
+      "password": "Password-564",
+      "name": "Test 03",
+      "dob": "12-03-1978",
+      "role": "customer",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer molestie imperdiet hendrerit. Aenean ornare magna eget lacinia posuere. Mauris sit amet interdum justo, nec pellentesque nisl. Donec id nibh fermentum, pulvinar dolor at, congue nibh"
+    },{
+      "id": "12348k",
+      "email": "test04@example.com",
+      "password": "Password-965",
+      "name": "Test 04",
+      "dob": "12-03-1978",
+      "role": "customer",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer molestie imperdiet hendrerit. Aenean ornare magna eget lacinia posuere. Mauris sit amet interdum justo, nec pellentesque nisl. Donec id nibh fermentum, pulvinar dolor at, congue nibh"
+    },{
+      "id": "12342a",
+      "email": "test05@example.com",
+      "password": "Password-555",
+      "name": "Test 05",
+      "dob": "12-03-1978",
+      "role": "admin",
+      "about": "Pellentesque euismod in mi ut ultricies. Aliquam fringilla dolor id tellus pretium accumsan. Quisque placerat, metus quis pretium vehicula, tortor erat feugiat velit, ut viverra velit tortor quis dui. Vivamus nec feugiat ante. Fusce a odio porttitor, interdum diam quis, sagittis est. Vestibulum ac fringilla enim. Phasellus eu enim efficitur, accumsan lectus quis, tristique ligula. Proin sed imperdiet metus."
+    }
+  ]
+}
