@@ -2,21 +2,41 @@
   form {
     display: block;
     max-width: 100%;
+
+    .actions {
+      a {
+        margin-left: 15%;
+      }
+      button {
+        margin: 2em 10% 0 20%;
+      }
+    }
   }
 }
 
 @media (min-width: 401px) {
   form {
-   max-width: 400px;
+    max-width: 400px;
+    .actions {
+      a {
+        margin-left: 20%;
+      }
+       button {
+        margin: 2em 0 0 30%;
+      }
+    }
   }
 }
+
 form {
   margin: 50px auto 0;
-  a {
-    margin: 0 15%;
-  }
-  h1{
+
+  h1 {
     text-align: center;
     text-transform: uppercase;
+  }
+
+  .actions {
+    display: inline-grid;
   }
 }
