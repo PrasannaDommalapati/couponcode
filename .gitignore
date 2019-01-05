@@ -66,3 +66,4 @@ typings/
 
 # dist dont want that folder
 dist/
+public/
