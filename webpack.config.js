@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const sassRegex = /\.(scss|sass|css)$/;
 const jsxRegex = /\.(js|jsx)$/;
-const imgRegex = /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/;
 require('dotenv').config();
 
 
@@ -40,10 +39,6 @@ module.exports = (env, argv) => ({
                     require.resolve('css-loader'),
                     require.resolve('sass-loader'),
                 ]
-            },
-            {
-                test: imgRegex,
-                loader: 'file-loader?name=[name].[ext]'
             }
         ]
     },

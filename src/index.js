@@ -8,7 +8,7 @@ import LoginComponent from "./components/profile/login/component";
 import RegisterComponent from "./components/profile/register/component";
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../favicon.png';
+import '../public/favicon.png';
 
 const routing = (
     <Router>
