@@ -15,16 +15,25 @@ export default class RegisterComponent extends Component {
             firstName: '',
             lastName: '',
             displayName: '',
-            about: ''
+            about: '',
+            form:{
+                invalid:'true'
+            }
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    validateForm = (event) => {
+
+        this.setState({form:{validate:true}})
     }
 
     handleChange = (event) => {
         this.setState({
             [event.target.id]: event.target.value
         })
+        this.validateForm(event);
     };
 
     handleSubmit = (event) => {
@@ -33,7 +42,6 @@ export default class RegisterComponent extends Component {
         const data = {
             email: this.state.email,
             password: this.state.password,
-            confirmPassword: this.state.confirmPassword,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             about: this.state.about
@@ -88,7 +96,7 @@ export default class RegisterComponent extends Component {
                            id="about"
                            onChange={this.handleChange}/>
                 </FormGroup>
-                <Button type="submit">Register</Button>
+                <Button type="submit" disabled={this.state.form.invalid}>Register</Button>
             </Form>
         );
     }
