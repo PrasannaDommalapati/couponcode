@@ -4,7 +4,10 @@ import * as Faker from 'faker';
 import RegisterComponent from "../components/profile/register/component";
 
 describe('Register Component', () => {
+
+    let event;
     let wrapper;
+
     beforeEach(() => {
         wrapper = shallow(<RegisterComponent/>);
     });
@@ -32,7 +35,7 @@ describe('Register Component', () => {
     it('should respond to on change event and change the state of email', () => {
 
         let email = Faker.internet.email();
-        let event = {
+        event = {
             target: {
                 id: 'email',
                 value: email
@@ -46,7 +49,7 @@ describe('Register Component', () => {
 
         let password = Faker.internet.password();
 
-        let event = {
+        event = {
             target: {
                 id: 'password',
                 value: password
@@ -60,7 +63,7 @@ describe('Register Component', () => {
     it('should respond to on change event and change the state of confirm password', () => {
 
         let password = Faker.internet.password();
-        let event = {
+        event = {
             target: {
                 id: 'confirmPassword',
                 value: password
@@ -74,7 +77,7 @@ describe('Register Component', () => {
     it('should respond to on change event and change the state of first name', () => {
 
         let firstName = Faker.name.firstName();
-        let event = {
+        event = {
             target: {
                 id: 'firstName',
                 value: firstName
@@ -88,7 +91,7 @@ describe('Register Component', () => {
     it('should respond to on change event and change the state of last name', () => {
 
         let lastName = Faker.name.lastName();
-        let event = {
+        event = {
             target: {
                 id: 'lastName',
                 value: lastName
@@ -102,7 +105,7 @@ describe('Register Component', () => {
     it('should respond to on change event and change the state of about', () => {
 
         let about = Faker.lorem.sentence();
-        let event = {
+        event = {
             target: {
                 id: 'about',
                 value: about
@@ -111,5 +114,24 @@ describe('Register Component', () => {
 
         wrapper.find('#about').simulate('change', event);
         expect(wrapper.state().about).toEqual(about);
+    });
+
+    it('should verify form submission', () => {
+
+        let handleSubmitMock = Object.assign(jest.fn(), {preventDefault: () =>{}});
+
+        let data = {
+            email:Faker.internet.email(),
+            password:Faker.internet.password(),
+            confirmPassword:Faker.internet.password(),
+            firstName:Faker.name.firstName(),
+            lastName:Faker.name.lastName(),
+            about:Faker.lorem.sentence(),
+        };
+
+        wrapper.find('#register').simulate('change', data);
+
+        wrapper.find('#register').simulate('submit',{handleSubmitMock});
+        expect(event.preventDefault).toHaveBeenCalledTimes(1);
     });
 });

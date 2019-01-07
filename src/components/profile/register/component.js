@@ -45,7 +45,7 @@ export default class RegisterComponent extends Component {
 
     render() {
         return (
-            <Form name="register" onSubmit={this.handleSubmit}>
+            <Form id="register" onSubmit={this.handleSubmit}>
                 <h1>register</h1>
                 <FormGroup>
                     <Input type="email"
@@ -88,7 +88,7 @@ export default class RegisterComponent extends Component {
                            id="about"
                            onChange={this.handleChange}/>
                 </FormGroup>
-                <Button>Register</Button>
+                <Button type="submit">Register</Button>
             </Form>
         );
     }
