@@ -17,7 +17,7 @@ export default class UserService {
 
         auth.createUserWithEmailAndPassword(data.email, data.password)
             .then(result => (data['uid'] = result.user.uid) && delete data.password)
-            .then(() => database.collection('users').add(data))
+            .then(() => database.collection('profiles').add(data))
             .catch(err => console.log(`Could not register: ${err}`));
     }
 }
