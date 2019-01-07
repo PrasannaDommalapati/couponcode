@@ -8,18 +8,16 @@ export default class RegisterComponent extends Component {
     constructor(props) {
         super(props);
 
-
-
         this.state = {
-            user: {
-                email: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                displayName: '',
-                about: ''
-            }
-        }
+            email: '',
+            password: '',
+            confirmPassword: '',
+            firstName: '',
+            lastName: '',
+            displayName: '',
+            about: ''
+        };
+
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -27,7 +25,7 @@ export default class RegisterComponent extends Component {
         this.setState({
             [event.target.id]: event.target.value
         })
-    }
+    };
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -35,6 +33,7 @@ export default class RegisterComponent extends Component {
         const data = {
             email: this.state.email,
             password: this.state.password,
+            confirmPassword: this.state.confirmPassword,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             about: this.state.about
@@ -42,7 +41,7 @@ export default class RegisterComponent extends Component {
 
         // UserService.signUp(data);
         UserService.register(data);
-    }
+    };
 
     render() {
         return (
@@ -60,6 +59,13 @@ export default class RegisterComponent extends Component {
                            name="registerPassword"
                            id="password"
                            placeholder="please enter password here.."
+                           onChange={this.handleChange}/>
+                </FormGroup>
+                <FormGroup>
+                    <Input type="password"
+                           name="confirmPassword"
+                           id="confirmPassword"
+                           placeholder="please confirm password here.."
                            onChange={this.handleChange}/>
                 </FormGroup>
                 <FormGroup>
