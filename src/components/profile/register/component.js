@@ -39,8 +39,8 @@ export default class RegisterComponent extends Component {
             about: this.state.about
         };
 
-        UserService.signUp(data);
-        UserService.register(this.state.email, this.state.password);
+        // UserService.signUp(data);
+        UserService.register(data);
     }
 
     render() {
