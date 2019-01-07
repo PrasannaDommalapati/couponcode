@@ -16,6 +16,7 @@ export default class RegisterComponent extends Component {
                 password: '',
                 firstName: '',
                 lastName: '',
+                displayName: '',
                 about: ''
             }
         }
