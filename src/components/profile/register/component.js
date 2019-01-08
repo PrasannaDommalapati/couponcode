@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
-import UserService from '../../../__services__/register'
+// import UserService from '../../../__services__/register'
 
 export default class RegisterComponent extends Component {
 
@@ -16,27 +16,33 @@ export default class RegisterComponent extends Component {
             lastName: '',
             displayName: '',
             about: '',
-            form:{
-                invalid:'true'
-            }
+            invalidForm: 'true'
+
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    validateForm = (event) => {
+    validateForm = () => {
 
-        this.setState({form:{validate:true}})
+        if (this.state.email &&
+            this.state.password &&
+            this.state.firstName &&
+            this.state.lastName &&
+            this.state.about) {
+            console.log('i have been called',this.state.email);
+            this.setState({inValidForm: false})
+        }
     }
 
-    handleChange = (event) => {
+    handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value
         })
-        this.validateForm(event);
+        this.validateForm();
     };
 
-    handleSubmit = (event) => {
+    handleSubmit = event => {
         event.preventDefault();
 
         const data = {
@@ -47,8 +53,9 @@ export default class RegisterComponent extends Component {
             about: this.state.about
         };
 
+        !this.state.invalidForm && console.log(data);
         // UserService.signUp(data);
-        UserService.register(data);
+        // UserService.register(data);
     };
 
     render() {
@@ -96,7 +103,7 @@ export default class RegisterComponent extends Component {
                            id="about"
                            onChange={this.handleChange}/>
                 </FormGroup>
-                <Button type="submit" disabled={this.state.form.invalid}>Register</Button>
+                <Button type="submit" disabled={this.state.invalidForm}>Register</Button>
             </Form>
         );
     }
