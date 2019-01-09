@@ -23,6 +23,7 @@ export default class UserService {
                 user = result.user;
                 data['uid'] = result.user.uid;
                 delete data.password;
+                delete data.confirmPassword;
             })
             .then((() => this.updateProfile(displayName)))
             .then(() => this.emailVerified(user))
@@ -37,7 +38,7 @@ export default class UserService {
     static emailVerified(user) {
 
         if(user.emailVerified){return;}
-           Promise.resolve()
+           return Promise.resolve()
                .then(() => user.sendEmailVerification())
                .then(() => console.log(`Email verification sent to ${user.email}`));
 
@@ -58,7 +59,7 @@ export default class UserService {
 
     static updateProfile(dName) {
 
-        Promise.resolve()
+        return Promise.resolve()
             .then(()=>  auth.currentUser.updateProfile({displayName:dName}))
             .then(() => console.log(`Update profile has been successful: ${ auth.currentUser.displayName}`))
             .catch(err => console.log(`Couldn't update the ${ auth.currentUser} profile :${err}`));

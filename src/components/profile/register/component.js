@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
+import LoginComponent from "../login/component";
+import {Redirect} from "react-router-dom";
+
 // import UserService from '../../../__services__/register'
 
 export default class RegisterComponent extends Component {
@@ -16,7 +19,7 @@ export default class RegisterComponent extends Component {
             lastName: '',
             displayName: '',
             about: '',
-            invalidForm: 'true'
+            validForm: false
 
         };
 
@@ -30,8 +33,7 @@ export default class RegisterComponent extends Component {
             this.state.firstName &&
             this.state.lastName &&
             this.state.about) {
-            console.log('i have been called',this.state.email);
-            this.setState({inValidForm: false})
+            this.setState({validForm: true})
         }
     }
 
@@ -53,9 +55,12 @@ export default class RegisterComponent extends Component {
             about: this.state.about
         };
 
-        !this.state.invalidForm && console.log(data);
+        !this.state.validForm && console.log(data);
         // UserService.signUp(data);
-        // UserService.register(data);
+        // UserService.register(data).then(() => {
+        //                 return <Redirect to="/login"/>
+        //             })
+
     };
 
     render() {
@@ -103,7 +108,7 @@ export default class RegisterComponent extends Component {
                            id="about"
                            onChange={this.handleChange}/>
                 </FormGroup>
-                <Button type="submit" disabled={this.state.invalidForm}>Register</Button>
+                {this.state.validForm && <Button type="submit">Register</Button>}
             </Form>
         );
     }

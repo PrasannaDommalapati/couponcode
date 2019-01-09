@@ -5,8 +5,6 @@ import './component.scss';
 
 export default class LoginComponent extends Component {
 
-
-
     render() {
         return (
             <Form name="login">
