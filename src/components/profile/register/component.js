@@ -1,8 +1,6 @@
-import React, {Component} from "react";
+import React, {Component}               from "react";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
-import LoginComponent from "../login/component";
-import {Redirect} from "react-router-dom";
 
 // import UserService from '../../../__services__/register'
 
@@ -12,14 +10,14 @@ export default class RegisterComponent extends Component {
         super(props);
 
         this.state = {
-            email: '',
-            password: '',
+            email          : '',
+            password       : '',
             confirmPassword: '',
-            firstName: '',
-            lastName: '',
-            displayName: '',
-            about: '',
-            validForm: false
+            firstName      : '',
+            lastName       : '',
+            displayName    : '',
+            about          : '',
+            validForm      : false
 
         };
 
@@ -40,7 +38,7 @@ export default class RegisterComponent extends Component {
     handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value
-        })
+        });
         this.validateForm();
     };
 
@@ -48,14 +46,15 @@ export default class RegisterComponent extends Component {
         event.preventDefault();
 
         const data = {
-            email: this.state.email,
-            password: this.state.password,
+            email    : this.state.email,
+            password : this.state.password,
             firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            about: this.state.about
+            lastName : this.state.lastName,
+            about    : this.state.about
         };
 
-        !this.state.validForm && console.log(data);
+        this.state.validForm && console.log(data) && this.props.history.push('/login');
+        console.log(this.props.history)
         // UserService.signUp(data);
         // UserService.register(data).then(() => {
         //                 return <Redirect to="/login"/>

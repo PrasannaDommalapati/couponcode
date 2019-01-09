@@ -20,3 +20,4 @@ describe('Login Component', () => {
         expect(wrapper.find('.actions').length).toEqual(1)
     });
 });
+
