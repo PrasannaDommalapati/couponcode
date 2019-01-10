@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
+import UserService from '../../../__services__/register'
 
 export default class LoginComponent extends Component {
 
@@ -48,7 +49,7 @@ export default class LoginComponent extends Component {
         };
 
         this.state.validForm && console.log(data);
-        // UserService.login(data);
+        UserService.login(data);
         // UserService.login(data).then(() => {
         //                 return <Redirect to="/dashboard"/>
         //             })

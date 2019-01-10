@@ -2,7 +2,7 @@ import React, {Component}               from "react";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
 
-// import UserService from '../../../__services__/register'
+import UserService from '../../../__services__/register'
 
 export default class RegisterComponent extends Component {
 
@@ -44,7 +44,7 @@ export default class RegisterComponent extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-
+        this.props.history.push('/login')
         const data = {
             email    : this.state.email,
             password : this.state.password,
@@ -53,12 +53,11 @@ export default class RegisterComponent extends Component {
             about    : this.state.about
         };
 
-        this.state.validForm && console.log(data) && this.props.history.push('/login');
+        this.state.validForm && console.log(data);
         console.log(this.props.history)
         // UserService.signUp(data);
-        // UserService.register(data).then(() => {
-        //                 return <Redirect to="/login"/>
-        //             })
+        UserService.register(data)
+                   .then(() => this.props.history.push('/login'));
 
     };
 

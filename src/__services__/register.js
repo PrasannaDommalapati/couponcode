@@ -21,7 +21,8 @@ export default class UserService {
         auth.createUserWithEmailAndPassword(data.email, data.password)
             .then(result =>{
                 user = result.user;
-                data['uid'] = result.user.uid;
+                data['photoURL'] = user.photoURL
+                data['uid'] = user.uid;
                 delete data.password;
                 delete data.confirmPassword;
             })
@@ -60,8 +61,17 @@ export default class UserService {
     static updateProfile(dName) {
 
         return Promise.resolve()
-            .then(()=>  auth.currentUser.updateProfile({displayName:dName}))
+            .then(()=>  auth.currentUser.updateProfile({displayName:dName,photoURL:'https://www.pastepic.xyz/image/0cwI1'}))
             .then(() => console.log(`Update profile has been successful: ${ auth.currentUser.displayName}`))
             .catch(err => console.log(`Couldn't update the ${ auth.currentUser} profile :${err}`));
+    }
+
+    static login(data) {
+
+        let email = data.email;
+        let password = data.password;
+        return Promise.resolve()
+            .then(() =>auth.signInWithEmailAndPassword(email, password))
+            .then(res => console.log(res));
     }
 }
