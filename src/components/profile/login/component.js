@@ -1,8 +1,9 @@
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import React, {Component}               from "react";
+import {Link}                           from "react-router-dom";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
-import UserService from '../../../__services__/register'
+import UserService                      from '../../../__services__/user-profile'
+import Paginator                        from '../../../__services__/paginator'
 
 export default class LoginComponent extends Component {
 
@@ -11,12 +12,21 @@ export default class LoginComponent extends Component {
         super(props);
 
         this.state = {
-            email: '',
-            password: '',
+            email    : '',
+            password : '',
             validForm: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+
+        Promise.resolve()
+               .then(() => fetch('http://localhost:5005/users'))
+               .then(res => res.json())
+               .then(users => Paginator.paginate(users))
+               .then(console.log)
     }
 
     validateForm = () => {
@@ -28,7 +38,7 @@ export default class LoginComponent extends Component {
         if (!!email && !!password && password.length > 7 && validPassRegex.test(password)) {
             this.setState({validForm: true})
         } else {
-            this.setState({validForm:false})
+            this.setState({validForm: false})
         }
     }
 
@@ -44,7 +54,7 @@ export default class LoginComponent extends Component {
 
 
         const data = {
-            email: this.state.email,
+            email   : this.state.email,
             password: this.state.password
         };
 

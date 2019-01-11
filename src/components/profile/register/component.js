@@ -2,7 +2,7 @@ import React, {Component}               from "react";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
 
-import UserService from '../../../__services__/register'
+import UserService from '../../../__services__/user-profile'
 
 export default class RegisterComponent extends Component {
 
