@@ -4,35 +4,43 @@ import './component.scss';
 
 import UserService from '../../../__services__/user-profile'
 
+const initRegState = {
+    email          : '',
+    password       : '',
+    confirmPassword: '',
+    firstName      : '',
+    lastName       : '',
+    displayName    : '',
+    about          : '',
+    form           : {valid: false}
+};
+
 export default class RegisterComponent extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            email          : '',
-            password       : '',
-            confirmPassword: '',
-            firstName      : '',
-            lastName       : '',
-            displayName    : '',
-            about          : '',
-            validForm      : false
-
-        };
+        this.state = initRegState;
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     validateForm = () => {
 
-        if (this.state.email &&
-            this.state.password &&
-            this.state.firstName &&
-            this.state.lastName &&
-            this.state.about) {
-            this.setState({validForm: true})
-        }
+        const email     = this.state.email,
+              password  = this.state.password,
+              confirm   = this.state.confirmPassword,
+              firstName = this.state.firstName,
+              lastName  = this.state.lastName,
+              about     = this.state.about;
+
+        const validPassRegex = new RegExp('((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)){7,20}');
+
+        let valid = !!email && !!password && !!confirm && !!firstName && !!lastName && !!about && validPassRegex.test(password) &&
+            validPassRegex.test(confirm) &&
+            (password === confirm);
+
+        this.setState({ form: {valid}});
     }
 
     handleChange = event => {
@@ -106,7 +114,7 @@ export default class RegisterComponent extends Component {
                            id="about"
                            onChange={this.handleChange}/>
                 </FormGroup>
-                {this.state.validForm && <Button type="submit">Register</Button>}
+                {this.state.form.valid && <Button type="submit">Register</Button>}
             </Form>
         );
     }

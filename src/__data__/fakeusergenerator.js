@@ -3,8 +3,7 @@ const faker = require('faker');
 
 function generateUsers() {
 
-
-    let users = []
+    let users = [];
 
     let numberOfUsers = faker.random.number({
         min: 1,

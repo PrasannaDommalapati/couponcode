@@ -13,7 +13,7 @@
     "test:coverage": "jest --coverage",
     "add-shrinkwrap": "npm shrinkwrap -dev && git add npm-shrinkwrap.json",
     "clean_nm": "rimraf node_modules",
-    "json-server": "json-server --watch fakeusergenerator.js --port 5005"
+    "json-server": "json-server --watch ./src/__data__/fakeusergenerator.js --port 5005"
   },
   "jest": {
     "transform": {

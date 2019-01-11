@@ -20,22 +20,21 @@ export default class LoginComponent extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-
-        Promise.resolve()
-               .then(() => fetch('http://localhost:5005/users'))
-               .then(res => res.json())
-               .then(users => Paginator.paginate(users))
-               .then(console.log)
-    }
+    // componentDidMount() {
+    //
+    //     fetch('http://localhost:5005/users')
+    //            .then(res => res.json())
+    //            .then(users => Paginator.paginate(users))
+    //            .then(console.log)
+    // }
 
     validateForm = () => {
 
-        let email = this.state.email;
-        let password = this.state.password;
-        let validPassRegex = new RegExp('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)');
+        let email    = this.state.email,
+            password = this.state.password;
+        let validPassRegex = new RegExp('((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)){7,20}');
 
-        if (!!email && !!password && password.length > 7 && validPassRegex.test(password)) {
+        if (!!email && !!password && validPassRegex.test(password)) {
             this.setState({validForm: true})
         } else {
             this.setState({validForm: false})
