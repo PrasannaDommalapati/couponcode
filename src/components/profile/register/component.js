@@ -2,7 +2,7 @@ import React, {Component}               from "react";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
 
-import UserService from '../../../__services__/user-profile'
+import UserProfile from '../../../__services__/user-profile'
 
 const initRegState = {
     email          : '',
@@ -61,10 +61,7 @@ export default class RegisterComponent extends Component {
             about    : this.state.about
         };
 
-        this.state.validForm && console.log(data);
-        console.log(this.props.history)
-        // UserService.signUp(data);
-        UserService.register(data)
+        this.state.form.valid && UserProfile.register(data)
                    .then(() => this.props.history.push('/login'));
 
     };

@@ -2,8 +2,7 @@ import React, {Component}               from "react";
 import {Link}                           from "react-router-dom";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
-import UserService                      from '../../../__services__/user-profile'
-import Paginator                        from '../../../__services__/paginator'
+import UserProfile                      from '../../../__services__/user-profile'
 
 export default class LoginComponent extends Component {
 
@@ -20,13 +19,16 @@ export default class LoginComponent extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // componentDidMount() {
-    //
-    //     fetch('http://localhost:5005/users')
-    //            .then(res => res.json())
-    //            .then(users => Paginator.paginate(users))
-    //            .then(console.log)
-    // }
+    componentDidMount() {
+
+        console.log(this.state.loggedIn);
+   //
+   //      fetch('http://localhost:5005/users')
+   //             .then(res => res.json())
+   //             .then(users => Paginator.paginate(users))
+   //             .then(console.log)
+   }
+
 
     validateForm = () => {
 
@@ -44,7 +46,7 @@ export default class LoginComponent extends Component {
     handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value
-        })
+        });
         this.validateForm();
     };
 
@@ -57,11 +59,9 @@ export default class LoginComponent extends Component {
             password: this.state.password
         };
 
-        this.state.validForm && console.log(data);
-        UserService.login(data);
-        // UserService.login(data).then(() => {
-        //                 return <Redirect to="/dashboard"/>
-        //             })
+        this.state.validForm && UserProfile.login(data)
+            .then(() => this.props.history.push('/dashboard'))
+            .catch(error => console.log(`Login un successful ${error}.`));
 
     };
 

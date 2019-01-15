@@ -1,17 +1,8 @@
-import firebase from '../config/firebase.config'
+import firebase from '../config/firebase.config';
 
-const database = firebase.firestore();
 const auth = firebase.auth();
-
-
-export default class UserService {
-
-    static signUp(data) {
-
-        Promise.resolve()
-            .then(() => database.collection('users').add(data))
-            .catch(err => console.log(`Could not register: ${err}`))
-    }
+const database = firebase.firestore();
+export default class UserProfile {
 
     static register(data) {
 
@@ -26,10 +17,17 @@ export default class UserService {
                 delete data.password;
                 delete data.confirmPassword;
             })
-            .then((() => this.updateProfile(displayName)))
+            .then(() => this.updateProfile(displayName))
             .then(() => this.emailVerified(user))
-            .then(() => database.collection('profiles').add(data))
+            .then(() => this.createProfile(data))
             .catch(err => console.log(`Could not register: ${err}`));
+    }
+
+    static createProfile(profile) {
+        return Promise.resolve()
+            .then(() =>database.collection('profiles').add(profile))
+            .then(documentRef => console.log(`Profile has been created successfully ${documentRef.id}`))
+            .catch(err => console.log(`Could not create a profile in the data base ${err}`))
     }
 
     /**
@@ -54,24 +52,37 @@ export default class UserService {
             console.log(`user not signed in`);
         }
     }
-    static forgotPassword() {
-
-    }
 
     static updateProfile(dName) {
 
         return Promise.resolve()
-            .then(()=>  auth.currentUser.updateProfile({displayName:dName,photoURL:'https://www.pastepic.xyz/image/0cwI1'}))
+            .then(()=>  auth.currentUser.updateProfile({
+                displayName:dName,
+                photoURL:'https://www.pastepic.xyz/image/0cwI1'
+            }))
             .then(() => console.log(`Update profile has been successful: ${ auth.currentUser.displayName}`))
             .catch(err => console.log(`Couldn't update the ${ auth.currentUser} profile :${err}`));
     }
 
     static login(data) {
 
-        let email = data.email;
-        let password = data.password;
         return Promise.resolve()
-            .then(() =>auth.signInWithEmailAndPassword(email, password))
-            .then(res => console.log(res));
+            .then(() =>auth.signInWithEmailAndPassword(data.email, data.password))
+            .then(credential => this.retrieveUserFromToken(credential))
+            // .then(userCredential => sessionstorage.setItem({userCredential}))
+            .catch(error => console.log(`Could not store in session storage${error}`));
+    }
+
+    static retrieveUserFromToken(credential) {
+        const token = credential.user.ra.split('.')[1];
+        const payload = JSON.parse(Buffer.from(token, 'base64').toString('ascii'));
+
+        console.log(payload)
+
+    }
+
+    static authStateChanged() {
+
+        auth.onAuthStateChanged(user =>console.log(user))
     }
 }
