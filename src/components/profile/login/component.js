@@ -1,8 +1,9 @@
 import React, {Component}               from "react";
-import {Link}                           from "react-router-dom";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
-import UserProfile                      from '../../../__services__/user-profile'
+// import UserProfile                      from '../../../__services__/user-profile'
+import users from '../../../__services__/auth';
+
 
 export default class LoginComponent extends Component {
 
@@ -19,15 +20,15 @@ export default class LoginComponent extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
+   // componentDidMount() {
 
-        console.log(this.state.loggedIn);
+     //   console.log(this.state.loggedIn);
    //
    //      fetch('http://localhost:5005/users')
    //             .then(res => res.json())
    //             .then(users => Paginator.paginate(users))
    //             .then(console.log)
-   }
+  // }
 
 
     validateForm = () => {
@@ -53,15 +54,15 @@ export default class LoginComponent extends Component {
     handleSubmit = event => {
         event.preventDefault();
 
-
         const data = {
             email   : this.state.email,
             password: this.state.password
         };
 
-        this.state.validForm && UserProfile.login(data)
-            .then(() => this.props.history.push('/dashboard'))
-            .catch(error => console.log(`Login un successful ${error}.`));
+        users.abc();
+        // this.state.validForm && UserProfile.login(data)
+        //     .then(() => this.props.history.push('/dashboard'))
+        //     .catch(error => console.log(`Login un successful ${error}.`));
 
     };
 
@@ -73,6 +74,7 @@ export default class LoginComponent extends Component {
                     <Input type="email"
                            name="loginEmail"
                            id="email"
+                           value={this.state.email}
                            placeholder="please enter email here.."
                            onChange={this.handleChange}/>
                 </FormGroup>
@@ -80,11 +82,12 @@ export default class LoginComponent extends Component {
                     <Input type="password"
                            name="loginPassword"
                            id="password"
+                           value={this.state.password}
                            placeholder="please enter password here.."
                            onChange={this.handleChange}/>
                 </FormGroup>
                 <div className="actions">
-                    <Link to="/forgot">Don't remember your password?</Link>
+                    <a href="/forgot">Don't remember your password?</a>
                     {this.state.validForm && <Button type="submit">Login</Button>}
                 </div>
             </Form>
