@@ -15,12 +15,12 @@ module.exports = (env, argv) => ({
         filename: '[name].bundle.js'
     },
     watch: false,
-    devtool: argv.mode == 'development' ? 'source-map' : false,
+    devtool: argv.mode === 'development' ? 'source-map' : false,
     performance: {hints: false},
     devServer: {
         historyApiFallback: true,
         host: process.env.DEV_SERVER_HOST || 'localhost',
-        port: process.env.DEV_SERVER_PORT || 5000
+        port: process.env.DEV_SERVER_PORT || 7000
     },
     module: {
         rules: [
