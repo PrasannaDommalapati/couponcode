@@ -1,5 +1,6 @@
 import React            from 'react';
 import Enzyme from '../setupTests';
+import faker from 'faker';
 import LoginComponent   from "../components/profile/login/component";
 
 describe('Login Component', () => {
@@ -21,7 +22,12 @@ describe('Login Component', () => {
         instance.handleSubmit= jest.fn();
 
         expect(wrapper.state().validForm).toEqual(false);
-        wrapper.setState({email: 'test@example.com', password: 'Password-123', validForm: true});
+        wrapper.setState(
+            {
+                email: faker.internet.email(),
+                password: 'Password-123',
+                validForm: true
+            });
         expect(wrapper.state().validForm).toEqual(true);
 
         wrapper.find('form').simulate('submit');

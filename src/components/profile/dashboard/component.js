@@ -10,11 +10,16 @@ export default class Dashboard extends React.Component {
         };
     }
 
-    render() {
-         return(
+    handleClick = () =>{
+       this.props.history.push('/login')
+    }
 
-             <div>
-                 Dashboard
-             </div>);
+    render() {
+        return (
+
+            <div>
+                Dashboard
+                <button type="button" onClick={this.handleClick}>Login</button>
+            </div>);
     }
 }

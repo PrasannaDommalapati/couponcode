@@ -55,19 +55,17 @@ export default class UserProfile {
 
     static updateProfile(dName) {
 
-        return Promise.resolve()
-            .then(()=>  auth.currentUser.updateProfile({
+        auth.currentUser.updateProfile({
                 displayName:dName,
                 photoURL:'https://www.pastepic.xyz/image/0cwI1'
-            }))
+            })
             .then(() => console.log(`Update profile has been successful: ${ auth.currentUser.displayName}`))
             .catch(err => console.log(`Couldn't update the ${ auth.currentUser} profile :${err}`));
     }
 
     static login(data) {
 
-        return Promise.resolve()
-            .then(() =>auth.signInWithEmailAndPassword(data.email, data.password))
+        auth.signInWithEmailAndPassword(data.email, data.password)
             .then(credential => this.retrieveUserFromToken(credential))
             // .then(userCredential => sessionstorage.setItem({userCredential}))
             .catch(error => console.log(`Could not store in session storage${error}`));
@@ -77,7 +75,14 @@ export default class UserProfile {
         const token = credential.user.ra.split('.')[1];
         const payload = JSON.parse(Buffer.from(token, 'base64').toString('ascii'));
 
-        console.log(payload)
+        console.log(payload);
+
+        //received token
+        //split and get a payload
+        //decode play load from base64
+        //parse in to json
+
+        //store the user in local storage
 
     }
 

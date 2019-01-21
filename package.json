@@ -18,7 +18,7 @@
   "jest": {
     "transform": {
       "^.+\\.(js|jsx)$": "babel-jest",
-      ".+\\.(css|styl|less|sass|scss)$": "./node_modules/jest-css-modules-transform"
+      ".+\\.(css|style|less|sass|scss)$": "./node_modules/jest-css-modules-transform"
     },
     "moduleNameMapper": {
       "\\.(scss|less|css)$": "identity-obj-proxy"
@@ -26,10 +26,12 @@
   },
   "dependencies": {
     "dotenv": "^6.2.0",
+    "npm": "^6.6.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
@@ -54,6 +56,7 @@
     "faker": "^4.1.0",
     "file-loader": "^2.0.0",
     "firebase": "^5.7.2",
+    "firebase-mock": "^2.2.10",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",

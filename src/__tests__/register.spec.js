@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from '../setupTests';
+import {shallow, mount} from '../setupTests';
 import * as Faker from 'faker';
 import RegisterComponent from "../components/profile/register/component";
 
@@ -12,27 +12,15 @@ describe('Register Component', () => {
         wrapper = shallow(<RegisterComponent/>);
     });
 
-    it('should render with an email field', () => {
+    test('form fields and actions are rendered', () => {
+
         expect(wrapper.find('#email').length).toEqual(1);
-    });
-
-    it('should render with a password field', () => {
         expect(wrapper.find('#password').length).toEqual(1);
-    });
-
-    it('should render with a firstName field', () => {
         expect(wrapper.find('#firstName').length).toEqual(1);
-    });
-
-    it('should render with a lastName field', () => {
         expect(wrapper.find('#lastName').length).toEqual(1);
-    });
-
-    it('should render with an about field', () => {
         expect(wrapper.find('#about').length).toEqual(1);
     });
-
-    it('should respond to on change event and change the state of email', () => {
+    test('should respond to on change event and change the state of email', () => {
 
         let email = Faker.internet.email();
         event = {
@@ -44,8 +32,7 @@ describe('Register Component', () => {
         wrapper.find('#email').simulate('change', event);
         expect(wrapper.state().email).toEqual(email);
     });
-
-    it('should respond to on change event and change the state of password', () => {
+    test('should respond to on change event and change the state of password', () => {
 
         let password = Faker.internet.password();
 
@@ -59,8 +46,7 @@ describe('Register Component', () => {
         wrapper.find('#password').simulate('change', event);
         expect(wrapper.state().password).toEqual(password);
     });
-
-    it('should respond to on change event and change the state of confirm password', () => {
+    test('should respond to on change event and change the state of confirm password', () => {
 
         let password = Faker.internet.password();
         event = {
@@ -73,8 +59,7 @@ describe('Register Component', () => {
         wrapper.find('#confirmPassword').simulate('change', event);
         expect(wrapper.state().confirmPassword).toEqual(password);
     });
-
-    it('should respond to on change event and change the state of first name', () => {
+    test('should respond to on change event and change the state of first name', () => {
 
         let firstName = Faker.name.firstName();
         event = {
@@ -87,8 +72,7 @@ describe('Register Component', () => {
         wrapper.find('#firstName').simulate('change', event);
         expect(wrapper.state().firstName).toEqual(firstName);
     });
-
-    it('should respond to on change event and change the state of last name', () => {
+    test('should respond to on change event and change the state of last name', () => {
 
         let lastName = Faker.name.lastName();
         event = {
@@ -101,8 +85,7 @@ describe('Register Component', () => {
         wrapper.find('#lastName').simulate('change', event);
         expect(wrapper.state().lastName).toEqual(lastName);
     });
-
-    it('should respond to on change event and change the state of about', () => {
+    test('should respond to on change event and change the state of about', () => {
 
         let about = Faker.lorem.sentence();
         event = {
@@ -115,38 +98,133 @@ describe('Register Component', () => {
         wrapper.find('#about').simulate('change', event);
         expect(wrapper.state().about).toEqual(about);
     });
+    test('register button should be disabled with empty email', () => {
 
-    it('register button should be disabled with empty email', () => {
+        wrapper.setState({
+            email: '',
+            password: Faker.internet.password(),
+            confirmPassword: Faker.internet.password(),
+            firstName: Faker.name.firstName(),
+            lastName: Faker.name.lastName(),
+            about: Faker.lorem.sentence(),
+            form: {
+                valid: false
+            }
+        });
+        expect(wrapper.state().form.valid).toEqual(false);
+
     });
-    it('register button should be disabled with empty password', () => {
+    test('register button should be disabled with empty password', () => {
+
+        wrapper.setState({
+            email: Faker.internet.email(),
+            password: '',
+            confirmPassword: Faker.internet.password(),
+            firstName: Faker.name.firstName(),
+            lastName: Faker.name.lastName(),
+            about: Faker.lorem.sentence(),
+            form: {
+                valid: false
+            }
+        });
+        expect(wrapper.state().form.valid).toEqual(false);
     });
-    it('register button should be disabled with empty confirm password', () => {
+    test('register button should be disabled with empty confirm password', () => {
+        wrapper.setState({
+            email: Faker.internet.email(),
+            password: Faker.internet.password(),
+            confirmPassword: '',
+            firstName: Faker.name.firstName(),
+            lastName: Faker.name.lastName(),
+            about: Faker.lorem.sentence(),
+            form: {
+                valid: false
+            }
+        });
+        expect(wrapper.state().form.valid).toEqual(false);
     });
-    it('register button should be disabled when password and confirm password are not equal', () => {
+    test('register button should be disabled when password and confirm password are not equal', () => {
+
+        let password1 = Faker.internet.password();
+        let password2 = Faker.internet.password();
+        wrapper.setState({
+            email: Faker.internet.email(),
+            password: password1,
+            confirmPassword: password2,
+            firstName: Faker.name.firstName(),
+            lastName: Faker.name.lastName(),
+            about: Faker.lorem.sentence(),
+            form: {
+                valid: password1 === password2
+            }
+        });
+        expect(wrapper.state().form.valid).toEqual(false);
     });
-    it('register button should be disabled with empty first name', () => {
+    test('register button should be disabled with empty first name', () => {
+
+        wrapper.setState({
+            email: Faker.internet.email(),
+            password: Faker.internet.password(),
+            confirmPassword: Faker.internet.password(),
+            firstName: '',
+            lastName: Faker.name.lastName(),
+            about: Faker.lorem.sentence(),
+            form: {
+                valid: false
+            }
+        });
+        expect(wrapper.state().form.valid).toEqual(false);
     });
-    it('register button should be disabled with empty last name', () => {
+    test('register button should be disabled with empty last name', () => {
+        wrapper.setState({
+            email: Faker.internet.email(),
+            password: Faker.internet.password(),
+            confirmPassword: Faker.internet.password(),
+            firstName: Faker.name.firstName(),
+            lastName: Faker.name.lastName(),
+            about: '',
+            form: {
+                valid: false
+            }
+        });
+        expect(wrapper.state().form.valid).toEqual(false);
     });
-    it('register button should be disabled with empty about', () => {
+    test('register button should be disabled with empty about', () => {
+        wrapper.setState({
+            email: Faker.internet.email(),
+            password: Faker.internet.password(),
+            confirmPassword: Faker.internet.password(),
+            firstName: Faker.name.firstName(),
+            lastName: '',
+            about: Faker.lorem.sentence(),
+            form: {
+                valid: false
+            }
+        });
+        expect(wrapper.state().form.valid).toEqual(false);
+    });
+    test('should verify form submission', () => {
+        let mWrapper = mount(<RegisterComponent/>);
+        let instance = mWrapper.instance();
+        instance.handleSubmit = jest.fn();
+
+        mWrapper.setState(
+            {
+                email:Faker.internet.email(),
+                password:Faker.internet.password(),
+                confirmPassword:Faker.internet.password(),
+                firstName:Faker.name.firstName(),
+                lastName:Faker.name.lastName(),
+                about:Faker.lorem.sentence(),
+                form: {
+                    valid:true
+                }
+            });
+
+        mWrapper.find('form').simulate('submit');
+        expect(instance.handleSubmit).toHaveBeenCalledTimes(1);
     });
 
-    // it('should verify form submission', () => {
-    //
-    //     let handleSubmitMock = Object.assign(jest.fn(), {preventDefault: () =>{}});
-    //
-    //     let data = {
-    //         email:Faker.internet.email(),
-    //         password:Faker.internet.password(),
-    //         confirmPassword:Faker.internet.password(),
-    //         firstName:Faker.name.firstName(),
-    //         lastName:Faker.name.lastName(),
-    //         about:Faker.lorem.sentence(),
-    //     };
-    //
-    //     wrapper.find('#register').simulate('change', data);
-    //
-    //     wrapper.find('#register').simulate('submit',{handleSubmitMock});
-    //     expect(event.preventDefault).toHaveBeenCalledTimes(1);
-    // });
 });
+
+
