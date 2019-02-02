@@ -21,7 +21,7 @@ export default class RegisterComponent extends Component {
         super(props);
 
         this.state = initRegState;
-
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 

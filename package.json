@@ -21,7 +21,7 @@
       ".+\\.(css|style|less|sass|scss)$": "./node_modules/jest-css-modules-transform"
     },
     "moduleNameMapper": {
-      "\\.(scss|less|css)$": "identity-obj-proxy"
+      "/\\.(scss|less|css)$": "identity-obj-proxy"
     }
   },
   "dependencies": {

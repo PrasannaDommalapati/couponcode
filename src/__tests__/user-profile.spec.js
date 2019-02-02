@@ -13,7 +13,7 @@ describe('user profile', () => {
 
     beforeAll(() => {
 
-        firebase.firebase.auth = jest.fn().mockReturnValue({});
+        // firebase.firebase.auth = jest.fn().mockReturnValue({});
     });
     beforeEach(() => {
         firebaseMock = jest.fn();

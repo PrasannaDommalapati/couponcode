@@ -4,7 +4,6 @@ import faker from 'faker';
 import UserProfile from '../../src/__services__/user-profile';
 
 export default class CouponApp extends Component {
-    sentence = faker.lorem.sentences();
 
     constructor(props) {
         super(props);
@@ -21,17 +20,7 @@ export default class CouponApp extends Component {
 
     render() {
         return (<div>
-            {this.sentence}
-            {this.sentence}
-            {this.sentence}
-            {this.sentence}
-            {this.sentence}
-            {this.sentence}
-            {this.sentence}
-            {this.sentence}
-            {this.sentence}
-            {this.sentence}
-            {this.sentence}
+            {faker.lorem.paragraphs()}
         </div>);
     }
 }

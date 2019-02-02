@@ -4,12 +4,12 @@ import 'firebase/auth';
 
 // Initialize Firebase
 const config = {
-    apiKey: process.env.apiKey,
-    authDomain: process.env.authDomain,
-    databaseURL: process.env.databaseURL,
-    projectId: process.env.projectId,
-    storageBucket: process.env.storageBucket,
-    messagingSenderId: process.env.messagingSenderId
+    apiKey: "AIzaSyCUq3j9P_9f6rbUodYcmeitr86KNXOE9PA",
+    authDomain: "promote-api.firebaseapp.com",
+    databaseURL: "https://promote-api.firebaseio.com",
+    projectId: "promote-api",
+    storageBucket: "promote-api.appspot.com",
+    messagingSenderId: "422113865622"
 };
 
 firebase.initializeApp(config);

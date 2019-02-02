@@ -4,7 +4,6 @@ import * as Faker from 'faker';
 import RegisterComponent from "../components/profile/register/component";
 
 describe('Register Component', () => {
-
     let event;
     let wrapper;
 
@@ -21,7 +20,6 @@ describe('Register Component', () => {
         expect(wrapper.find('#about').length).toEqual(1);
     });
     test('should respond to on change event and change the state of email', () => {
-
         let email = Faker.internet.email();
         event = {
             target: {
@@ -224,7 +222,6 @@ describe('Register Component', () => {
         mWrapper.find('form').simulate('submit');
         expect(instance.handleSubmit).toHaveBeenCalledTimes(1);
     });
-
 });
 
 
