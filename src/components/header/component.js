@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, Route} from "react-router-dom";
 import {
     Collapse,
+    Button,
     Navbar,
     NavbarToggler,
     NavbarBrand,
@@ -12,6 +13,8 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem } from 'reactstrap';
+import UserProfile from '../../__services__/user-profile';
+
 
 export default class AppHeader extends React.Component {
 
@@ -28,6 +31,10 @@ export default class AppHeader extends React.Component {
         this.setState({
             isOpen: !this.state.isOpen
         });
+    }
+
+    logout = () => {
+        UserProfile.logout();
     }
 
     render(){
@@ -57,7 +64,7 @@ export default class AppHeader extends React.Component {
                                     </DropdownItem>
                                     <DropdownItem divider />
                                     <DropdownItem>
-                                        Reset
+                                        <Button onClick={this.logout}>Logout</Button>
                                     </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>

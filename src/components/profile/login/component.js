@@ -1,39 +1,38 @@
-import React, {Component}               from "react";
+import React, {Component} from "react";
 import {Button, Form, FormGroup, Input} from 'reactstrap';
 import './component.scss';
-// import UserProfile                      from '../../../__services__/user-profile'
-import users from '../../../__services__/auth';
-
+import UserProfile from '../../../__services__/user-profile';
 
 export default class LoginComponent extends Component {
-
 
     constructor(props) {
         super(props);
 
         this.state = {
-            email    : '',
-            password : '',
+            email: '',
+            password: '',
             validForm: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.validateForm = this.validateForm.bind(this);
     }
 
-   // componentDidMount() {
+    // componentDidMount() {
 
-     //   console.log(this.state.loggedIn);
-   //
-   //      fetch('http://localhost:5005/users')
-   //             .then(res => res.json())
-   //             .then(users => Paginator.paginate(users))
-   //             .then(console.log)
-  // }
+    //   console.log(this.state.loggedIn);
+    //
+    //      fetch('http://localhost:5005/users')
+    //             .then(res => res.json())
+    //             .then(users => Paginator.paginate(users))
+    //             .then(console.log)
+    // }
 
 
     validateForm = () => {
 
-        let email    = this.state.email,
+        let email = this.state.email,
             password = this.state.password;
         let validPassRegex = new RegExp('((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)){7,20}');
 
@@ -55,14 +54,13 @@ export default class LoginComponent extends Component {
         event.preventDefault();
 
         const data = {
-            email   : this.state.email,
+            email: this.state.email,
             password: this.state.password
         };
 
-        users.abc();
-        // this.state.validForm && UserProfile.login(data)
-        //     .then(() => this.props.history.push('/dashboard'))
-        //     .catch(error => console.log(`Login un successful ${error}.`));
+        this.state.validForm && UserProfile.login(data)
+            .then(() => this.props.history.push('/dashboard'))
+            .catch(error => console.log(`Login un successful ${error}.`));
 
     };
 

@@ -1,7 +1,7 @@
 import firebase from '../config/firebase.config';
-
 const auth = firebase.auth();
 const database = firebase.firestore();
+
 export default class UserProfile {
 
     static register(data) {
@@ -65,7 +65,8 @@ export default class UserProfile {
 
     static login(data) {
 
-        auth.signInWithEmailAndPassword(data.email, data.password)
+        return Promise.resolve()
+            .then(() =>auth.signInWithEmailAndPassword(data.email, data.password))
             .then(credential => this.retrieveUserFromToken(credential))
             // .then(userCredential => sessionstorage.setItem({userCredential}))
             .catch(error => console.log(`Could not store in session storage${error}`));
@@ -73,7 +74,8 @@ export default class UserProfile {
 
     static retrieveUserFromToken(credential) {
         const token = credential.user.ra.split('.')[1];
-        const payload = JSON.parse(Buffer.from(token, 'base64').toString('ascii'));
+        const payload = JSON.parse(Buffer.from(token, 'base64')
+            .toString('ascii'));
 
         console.log(payload);
 
@@ -85,9 +87,20 @@ export default class UserProfile {
         //store the user in local storage
 
     }
+    static logout() {
+        return auth.signOut()
+            .then(() => console.log('user logged out!!!'))
+            .catch(err => console.log(`Could not logout user ${err}`));
+    }
 
     static authStateChanged() {
 
-        auth.onAuthStateChanged(user =>console.log(user))
+        auth.onAuthStateChanged(user =>{
+            if(user) {
+                console.log("logged in")
+            } else {
+                console.log('not logged in');
+            }
+        })
     }
 }

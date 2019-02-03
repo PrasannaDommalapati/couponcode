@@ -19,7 +19,6 @@ export default class Dashboard extends React.Component {
 
             <div>
                 Dashboard
-                <button type="button" onClick={this.handleClick}>Login</button>
             </div>);
     }
 }
