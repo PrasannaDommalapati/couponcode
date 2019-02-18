@@ -20,7 +20,12 @@ module.exports = (env, argv) => ({
     devServer: {
         historyApiFallback: true,
         host: process.env.DEV_SERVER_HOST || 'localhost',
-        port: process.env.DEV_SERVER_PORT || 7000
+        port: process.env.DEV_SERVER_PORT || 7000,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization, Ocp-Apim-Subscription-Key",
+          },
     },
     module: {
         rules: [

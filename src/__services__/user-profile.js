@@ -95,11 +95,13 @@ export default class UserProfile {
 
     static authStateChanged() {
 
-        auth.onAuthStateChanged(user =>{
+       return auth.onAuthStateChanged(user =>{
             if(user) {
                 console.log("logged in")
+                return user;
             } else {
                 console.log('not logged in');
+                return null;
             }
         })
     }
