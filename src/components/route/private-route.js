@@ -5,8 +5,7 @@ import UserProfile from '../../__services__/user-profile';
 export const PrivateRoute = ({ component: Component, ...rest }) => {
     
     let user = UserProfile.authStateChanged();
-    console.log(user.user_id)
-   
+  
     return (
         <Route {...rest} render={
             (props) => {
