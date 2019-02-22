@@ -1,9 +1,10 @@
 import React from 'react';
+import fetch from 'isomorphic-fetch';
 
 export default class Dashboard extends React.Component {
 
     constructor(props) {
-        console.log('props',props)
+        console.log('props', props)
 
         super(props);
         this.state = {
@@ -24,27 +25,18 @@ export default class Dashboard extends React.Component {
                 "data": base64Data
             };
 
-            let myHeaders = new Headers();
-            myHeaders.set('Accept', 'application/json');
-            myHeaders.set('Ocp-Apim-Subscription-Key', '6e13eebbefc04526a82528824e350e43');
-
-            myHeaders.set('Access-Control-Allow-Origin', '*');
-            myHeaders.set('Access-Control-Allow-Credentials', 'true');
-            myHeaders.set('Access-Control-Allow-Methods', 'OPTIONS, GET,POST, PUT');
-            myHeaders.set('Access-Control-Request-Headers', 'Origin,Content-Type,Ocp-Apim-Subscription-Key');
-         
-            let request = new Request('https://proxy.z-ppp-dv-apim01.xpzcloud.com/outputs/qa/api/requests', {
+            let request = new Request('https://proxy.z-ppp-dv-apim01.xpzcloud.com/outputs/dv/api/requests', {
                 method: 'POST',
-                headers: myHeaders,
+                headers: {
+                    'Ocp-Apim-Subscription-Key': '6e13eebbefc04526a82528824e350e43',
+                    'Content-Type': 'application/json',
+                    'Ocp-Apim-Trace': 'true'
+                },
                 // mode: 'no-cors',
                 body: JSON.stringify(body)
             });
 
-           
-
-            fetch(request)
-                .then(response => console.warn("reader result", response))
-                .catch(console.log);
+            fetch(request);
         };
     };
 
