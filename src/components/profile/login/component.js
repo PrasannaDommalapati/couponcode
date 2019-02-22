@@ -4,23 +4,26 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import UserProfile from '../../../__services__/user-profile';
 import './component.scss';
+export default class LoginComponent extends React.Component {
 
-export const LoginComponent = () => (
-    <div className="login">
+    handleSubmit = (values, actions) => {
+        actions.setSubmitting(true);
+        const { history } = this.props;
+        UserProfile.login(values)
+            .then(() => history.push('/dashboard'))
+            .then(() => actions.setSubmitting(false))
+            .catch(error => console.log(`Login un successful ${error}.`));
+    }
+
+    render() {
+        return (<div className="login">
         <Formik
             initialValues={
                 {
                     email: '',
                     password: ''
                 }}
-            onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    UserProfile.login(values)
-                        .then(() => this.props.history.push('/dashboard'))
-                        .catch(error => console.log(`Login un successful ${error}.`));
-                    setSubmitting(false);
-                }, 500);
-            }}
+            onSubmit={this.handleSubmit}
             validationSchema={Yup.object().shape({
                 email: Yup.string()
                     .email()
@@ -76,8 +79,10 @@ export const LoginComponent = () => (
                 );
             }}
         </Formik>
-    </div>
-);
+    </div>);
+    }
+}
+
 
 
 // export default class LoginComponent extends Component {

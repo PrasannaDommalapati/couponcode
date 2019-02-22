@@ -6,7 +6,7 @@ import CouponApp from './components/coupon-app';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import AppHeader from "./components/header/component";
 import FooterComponent from "./components/footer/component";
-import {LoginComponent} from "./components/profile/login/component";
+import LoginComponent from "./components/profile/login/component";
 import RegisterComponent from "./components/profile/register/component";
 import Dashboard from "./components/dashboard/component";
 import {PrivateRoute} from './components/route/private-route';
