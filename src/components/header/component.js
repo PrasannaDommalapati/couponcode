@@ -23,6 +23,7 @@ export default class AppHeader extends React.Component {
         super(props);
 
         this.toggle = this.toggle.bind(this);
+        this.logout = this.logout.bind(this);
         this.state = {
             isOpen: false
         };
@@ -34,7 +35,9 @@ export default class AppHeader extends React.Component {
     }
 
     logout = () => {
-        UserProfile.logout();
+        UserProfile.logout()
+        .then(() =>console.log('props in header',this.props))
+        .then(() => this.props.history.push('/login'));
     }
 
     render(){

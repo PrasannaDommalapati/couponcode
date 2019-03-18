@@ -18,7 +18,6 @@ const store = createStore(storiesReducer);
 
 
 ReactDOM.render(
-    <Provider store={store}>
     <Router>
         <div>
             <AppHeader />
@@ -28,6 +27,5 @@ ReactDOM.render(
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <FooterComponent />
         </div>
-    </Router>
-    </Provider>,
+    </Router>,
     document.getElementById('root'));

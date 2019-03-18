@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow, mount} from '../setupTests';
+import Enzyme from '../setupTests';
 import * as Faker from 'faker';
 import RegisterComponent from "../components/profile/register/component";
 
@@ -8,7 +8,7 @@ describe('Register Component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<RegisterComponent/>);
+        wrapper = Enzyme.shallow(<RegisterComponent/>);
     });
 
     test('form fields and actions are rendered', () => {

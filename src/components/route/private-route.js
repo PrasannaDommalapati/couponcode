@@ -10,6 +10,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
         <Route {...rest} render={
             (props) => {
                 if (!!user) {
+                    console.log('user from private route',user)
                     return <Component {...props} />
                 }
                 else {
