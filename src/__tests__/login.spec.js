@@ -7,7 +7,7 @@ describe('Login Component', () => {
 
     test('form fields and actions are rendered', () => {
 
-        let wrapper = Enzyme.shallow(<LoginComponent/>);
+        let wrapper = Enzyme.mount(<LoginComponent/>);
 
         expect(wrapper.find('#email')).toHaveLength(1);
         expect(wrapper.find('#password')).toHaveLength(1);
