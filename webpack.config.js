@@ -18,9 +18,11 @@ module.exports = (env, argv) => ({
     devtool: argv.mode === 'development' ? 'source-map' : false,
     performance: {hints: false},
     devServer: {
+        https: true,
         historyApiFallback: true,
         host: process.env.DEV_SERVER_HOST || 'localhost',
         port: process.env.DEV_SERVER_PORT || 7000,
+        watchContentBase: true,
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",

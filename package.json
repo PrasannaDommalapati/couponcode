@@ -8,7 +8,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode production --hot --open --progress --colors",
     "build": "webpack --mode production --progress",
-    "test": "jest --no-cache",
+    "test": "jest --no-cache --env=jsdom",
     "test:dev": "jest --watch",
     "test:coverage": "jest --coverage",
     "add-shrinkwrap": "npm shrinkwrap -dev && git add npm-shrinkwrap.json",
@@ -20,6 +20,11 @@
       "^.+\\.(js|jsx)$": "babel-jest",
       ".+\\.(css|style|less|sass|scss)$": "./node_modules/jest-css-modules-transform"
     },
+    "coverageReporters": [
+      "text",
+      "Cobertura",
+      "html"
+    ],
     "moduleNameMapper": {
       "/\\.(scss|less|css)$": "identity-obj-proxy"
     }
@@ -56,6 +61,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "faker": "^4.1.0",
     "file-loader": "^2.0.0",
+    "firebase": "^6.0.2",
     "formik": "^1.5.1",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
