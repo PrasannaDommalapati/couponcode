@@ -16,6 +16,7 @@
     "json-server": "json-server --watch ./src/__data__/fakeusergenerator.js --port 5005"
   },
   "jest": {
+  "setupFiles": ["<rootDir>/src/setupTests.js"],
     "transform": {
       "^.+\\.(js|jsx)$": "babel-jest",
       ".+\\.(css|styl|less|sass|scss)$": "./node_modules/jest-css-modules-transform"
