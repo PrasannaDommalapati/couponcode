@@ -28,7 +28,7 @@ export default class Dashboard extends React.Component {
             let request = new Request('https://proxy.z-ppp-dv-apim01.xpzcloud.com/outputs/dv/api/requests', {
                 method: 'POST',
                 headers: {
-                    'Ocp-Apim-Subscription-Key': '6e13eebbefc04526a82528824e350e43',
+                    'Ocp-Apim-Subscription-Key': 'dbvkjdhfbjndfbkdjnf',
                     'Content-Type': 'application/json',
                     'Ocp-Apim-Trace': 'true'
                 },
